@@ -4,30 +4,30 @@
 
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ciiiii/cloudflare-docker-proxy)
 
-> If you're looking for proxy for helm, maybe you can try [cloudflare-helm-proxy](https://github.com/ciiiii/cloudflare-helm-proxy).
+> 如果您正在寻找 docker 的代理，也许您可​​以尝试cloudflare-helm-proxy。 [cloudflare-helm-proxy](https://github.com/ciiiii/cloudflare-helm-proxy).
 
-## Deploy
+## 部署
 
-1. click the "Deploy With Workers" button
-2. follow the instructions to fork and deploy
-3. update routes as you requirement
+1. 点击“使用 Workers 部署”按钮
+2. 按照说明进行分叉和部署
+3. 根据需要更新路线
 
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ciiiii/cloudflare-docker-proxy)
 
-## Routes configuration tutorial
+## 路线配置教程
 
-1. use cloudflare worker host: only support proxy one registry
+1. 使用 cloudflare worker host：仅支持代理一个注册表
    ```javascript
    const routes = {
      "${workername}.${username}.workers.dev/": "https://registry-1.docker.io",
    };
    ```
-2. use custom domain: support proxy multiple registries route by host
-   - host your domain DNS on cloudflare
-   - add `A` record of xxx.example.com to `192.0.2.1`
-   - deploy this project to cloudflare workers
-   - add `xxx.example.com/*` to HTTP routes of workers
-   - add more records and modify the config as you need
+2. 使用自定义域名：支持通过主机代理多个注册中心路由
+   - 在 cloudflare 上托管您的域名 DNS
+   - 'A'将xxx.example.com 的记录添加到'192.0.2.1'
+   - 将该项目部署到cloudflare worker
+   - 添加'xxx.example.com/*'到工作者的HTTP路由
+   - 根据需要添加更多记录并修改配置
    ```javascript
    const routes = {
      "docker.libcuda.so": "https://registry-1.docker.io",
